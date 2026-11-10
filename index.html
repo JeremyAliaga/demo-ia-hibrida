@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Device Assistant</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    color: #1f2937;
+}
+
+.container {
+    max-width: 850px;
+    margin: 70px auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 45px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-size: 14px;
+    font-weight: bold;
+    color: #0078d4;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 15px 0 10px;
+}
+
+.subtitle {
+    color: #667085;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+textarea {
+    width: 100%;
+    height: 130px;
+    border: 1px solid #d0d5dd;
+    border-radius: 10px;
+    padding: 18px;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #0078d4;
+}
+
+button {
+    margin-top: 18px;
+    background: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #005ea6;
+}
+
+.resultado {
+    margin-top: 35px;
+    padding: 25px;
+    background: #f8fafc;
+    border-radius: 12px;
+    display: none;
+}
+
+.resultado h2 {
+    margin-top: 0;
+}
+
+.producto {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px;
+    margin-top: 15px;
+}
+
+.precio {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.info {
+    color: #667085;
+    margin-top: 8px;
+}
+
+.estado {
+    margin-top: 20px;
+    color: #667085;
+    font-size: 14px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="logo">
+HYBRID INTELLIGENCE
+</div>
+
+<h1>
+AI Device Assistant
+</h1>
+
+<p class="subtitle">
+Describe lo que necesita tu cliente y encuentra el equipo adecuado.
+</p>
+
+
+<textarea id="peticion"
+placeholder="Ejemplo: Necesito 4 portátiles Intel Core Ultra 7, 16 GB de RAM y 512 GB SSD">
+</textarea>
+
+
+<button onclick="buscar()">
+ANALIZAR NECESIDAD
+</button>
+
+
+<div id="estado" class="estado"></div>
+
+
+<div id="resultado" class="resultado">
+
+<h2>
+Recomendación
+</h2>
+
+<div id="productos"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+async function buscar() {
+
+    const peticion = document.getElementById("peticion").value;
+
+    if (!peticion.trim()) {
+        alert("Escribe primero qué equipo necesitas.");
+        return;
+    }
+
+    document.getElementById("estado").innerText =
+        "Analizando la necesidad...";
+
+    /*
+    AQUÍ CONECTAREMOS N8N
+    */
+
+    setTimeout(() => {
+
+        document.getElementById("estado").innerText =
+            "Demo preparada para conectar con IA local.";
+
+        document.getElementById("resultado").style.display =
+            "block";
+
+        document.getElementById("productos").innerHTML = `
+
+        <div class="producto">
+
+            <strong>Lenovo Yoga Slim 7i</strong>
+
+            <div class="info">
+            Intel Core Ultra 7 · 16 GB RAM · 1 TB SSD
+            </div>
+
+            <div class="precio">
+            1.399 €
+            </div>
+
+        </div>
+
+        `;
+
+    }, 1000);
+
+}
+
+</script>
+
+</body>
+
+</html>
